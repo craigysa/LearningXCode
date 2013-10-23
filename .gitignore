@@ -200,4 +200,3 @@ UserInterface.xcuserstate
 ## Option to ignore everything except the main project file in the project folder.
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
-*.h
