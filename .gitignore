@@ -155,10 +155,12 @@ xcuserdata
 
 *.moved-aside
 
-####
+#####
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
-# The following extras were added by the github template version of this file for objective-c projects
+
+
+# The following extras come from the github template version of this file for objective-c projects
 
 .idea/
 *.hmap
@@ -167,9 +169,12 @@ xcuserdata
 #CocoaPods
 Pods
 
-######################
-## Xcode objective-c ignores suggested by github
-######################
+########
+# Additional lists for reference purposes
+#
+########
+#### Xcode objective-c ignores suggested by github
+##
 ##.DS_Store
 ##*/build/*
 ##*.pbxuser
@@ -187,16 +192,25 @@ Pods
 ##.idea/
 ##*.hmap
 ##*.xccheckout
-
+##
 ###CocoaPods
 ##Pods
-
-
-## More suggestions from WWDC 2012 Session Videos
-## (Session 411 - Source Control Management in XCode)
-UserInterface.xcuserstate
-*.xcuserdatad
-
-## Option to ignore everything except the main project file in the project folder.
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
+##
+########
+#### Suggestions from WWDC 2012 Session Videos: Session 411 - Source Control Management in XCode
+##.DS_Store
+##UserInterface.xcuserstate
+##*.xcuserdatad
+##
+########
+#### Option to ignore everything except the main project file in the project folder.
+##*.xcodeproj/*
+##!*.xcodeproj/project.pbxproj
+##
+########
+#### Workspace folders seem counter-intuitive to be included in source control.
+#### Surely it is something specific to an *actual workspace*
+##project.xcworkspace/
+##contents.xcworkspacedata
+##
+########
