@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--Hello World View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="HelloWorldViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="agF-Mk-IH2"/>
+                        <viewControllerLayoutGuide type="bottom" id="IGU-pn-h5g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oup-E2-Qc6">
+                                <rect key="frame" x="20" y="30" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" hint="Type your name"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="FW9-XG-c8H"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFL-dB-GmX">
+                                <rect key="frame" x="20" y="83" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d32-OX-Use">
+                                <rect key="frame" x="143" y="430" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <state key="normal" title="Hello"/>
+                                <connections>
+                                    <action selector="changeGreeting:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gce-p8-5nQ"/>
+                                </connections>
+                            </button>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFG-If-Rwc">
+                                <rect key="frame" x="186" y="430" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.096878622009999998" blue="0.073113049309999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Goodbye">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sayGoodbye:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ulO-mK-s2N"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJd-Pq-ccB">
+                                <rect key="frame" x="115" y="234" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IGU-pn-h5g" firstAttribute="top" secondItem="d32-OX-Use" secondAttribute="bottom" constant="20" id="20i-Fx-Vw7"/>
+                            <constraint firstItem="Oup-E2-Qc6" firstAttribute="top" secondItem="agF-Mk-IH2" secondAttribute="bottom" constant="10" id="IHi-Q0-uat"/>
+                            <constraint firstAttribute="centerX" secondItem="d32-OX-Use" secondAttribute="centerX" id="R7A-UM-8iu"/>
+                            <constraint firstItem="qFG-If-Rwc" firstAttribute="leading" secondItem="d32-OX-Use" secondAttribute="trailing" constant="8" symbolic="YES" id="WcM-JZ-yJI"/>
+                            <constraint firstItem="qFG-If-Rwc" firstAttribute="baseline" secondItem="d32-OX-Use" secondAttribute="baseline" id="ZOb-yQ-coE"/>
+                            <constraint firstItem="Oup-E2-Qc6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Zsv-hq-lbd"/>
+                            <constraint firstAttribute="centerX" secondItem="GFL-dB-GmX" secondAttribute="centerX" id="aC0-Ta-IhE"/>
+                            <constraint firstItem="GFL-dB-GmX" firstAttribute="top" secondItem="Oup-E2-Qc6" secondAttribute="bottom" constant="23" id="hrH-4h-ZUV"/>
+                            <constraint firstItem="Oup-E2-Qc6" firstAttribute="width" secondItem="GFL-dB-GmX" secondAttribute="width" id="r61-rL-5oi"/>
+                            <constraint firstAttribute="trailing" secondItem="Oup-E2-Qc6" secondAttribute="trailing" constant="20" id="rVk-E2-oZ8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="greetingOutput" destination="GFL-dB-GmX" id="V1t-tS-sUf"/>
+                        <outlet property="middleButton" destination="EJd-Pq-ccB" id="X2a-uD-kuQ"/>
+                        <outlet property="nameInput" destination="Oup-E2-Qc6" id="oHH-5o-BML"/>
+                        <outlet property="redButton" destination="qFG-If-Rwc" id="Z5Q-aj-kYW"/>
+                        <outlet property="roundedButton" destination="qFG-If-Rwc" id="3A1-1V-LIC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
