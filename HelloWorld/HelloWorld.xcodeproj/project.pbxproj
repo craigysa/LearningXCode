@@ -21,6 +21,8 @@
 		9A64A23A180AB69100FA507C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A64A21C180AB69100FA507C /* UIKit.framework */; };
 		9A64A242180AB69100FA507C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A64A240180AB69100FA507C /* InfoPlist.strings */; };
 		9A64A244180AB69100FA507C /* HelloWorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A64A243180AB69100FA507C /* HelloWorldTests.m */; };
+		9A749D65182190FB0074A949 /* CYCGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A749D64182190FB0074A949 /* CYCGameClock.m */; };
+		9A749D671821915E0074A949 /* CYCGameClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A749D661821915E0074A949 /* CYCGameClockTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		9A64A23F180AB69100FA507C /* HelloWorldTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloWorldTests-Info.plist"; sourceTree = "<group>"; };
 		9A64A241180AB69100FA507C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A64A243180AB69100FA507C /* HelloWorldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldTests.m; sourceTree = "<group>"; };
+		9A749D63182190FB0074A949 /* CYCGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYCGameClock.h; sourceTree = "<group>"; };
+		9A749D64182190FB0074A949 /* CYCGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCGameClock.m; sourceTree = "<group>"; };
+		9A749D661821915E0074A949 /* CYCGameClockTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCGameClockTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +125,8 @@
 				9A64A22E180AB69100FA507C /* HelloWorldViewController.m */,
 				9A64A230180AB69100FA507C /* Images.xcassets */,
 				9A64A21F180AB69100FA507C /* Supporting Files */,
+				9A749D63182190FB0074A949 /* CYCGameClock.h */,
+				9A749D64182190FB0074A949 /* CYCGameClock.m */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -140,6 +147,7 @@
 			children = (
 				9A64A243180AB69100FA507C /* HelloWorldTests.m */,
 				9A64A23E180AB69100FA507C /* Supporting Files */,
+				9A749D661821915E0074A949 /* CYCGameClockTests.m */,
 			);
 			path = HelloWorldTests;
 			sourceTree = "<group>";
@@ -253,6 +261,7 @@
 			files = (
 				9A64A229180AB69100FA507C /* HelloWorldAppDelegate.m in Sources */,
 				9A64A22F180AB69100FA507C /* HelloWorldViewController.m in Sources */,
+				9A749D65182190FB0074A949 /* CYCGameClock.m in Sources */,
 				9A64A225180AB69100FA507C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A749D671821915E0074A949 /* CYCGameClockTests.m in Sources */,
 				9A64A244180AB69100FA507C /* HelloWorldTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +476,7 @@
 				9A64A249180AB69100FA507C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A64A24A180AB69100FA507C /* Build configuration list for PBXNativeTarget "HelloWorldTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +485,7 @@
 				9A64A24C180AB69100FA507C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
