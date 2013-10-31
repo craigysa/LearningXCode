@@ -72,4 +72,9 @@
     XCTAssertEqual(timer, clock.timer, @"Same timer");
 }
 
+- (void)testDefaultTimerAssigned {
+    CYCGameClock *clock = [CYCGameClock new];
+    XCTAssertNotNil(clock.timer, @"Default timer should be assigned if created without timer");
+}
+
 @end

@@ -29,6 +29,12 @@
     return self;
 }
 
+- (id)init;
+{
+    _timer = [CYCTimer new];
+    return self;
+}
+
 - (CYCTimer*)timer;
 {
     return _timer;
