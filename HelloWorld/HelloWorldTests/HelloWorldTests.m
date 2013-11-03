@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "HelloWorldViewController.h"
+
 
 @interface HelloWorldTests : XCTestCase
 
@@ -32,11 +34,18 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testGreeting
 {
-    //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-    NSString *s = [NSString new];
-    XCTAssertNotNil(s, @"Bad news");
+    HelloWorldViewController *view = [[HelloWorldViewController alloc] init];
+
+    view.yourName = @"Apple";
+    XCTAssertEqualObjects(@"Hello Apple :)", view.greeting, @"Greet a specific person");
+
+    view.yourName = @"";
+    XCTAssertEqualObjects(@"Hello World! :)", view.greeting, @"Greet everyone");
+
+    //view.yourName = @" Apple ";
+    //XCTAssertEqualObjects(@"Hello Apple :)", view.greeting, @"Trim name for greeting");
 }
 
 @end

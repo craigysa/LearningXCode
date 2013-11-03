@@ -18,7 +18,7 @@
 @end
 
 @implementation HelloWorldViewController
-
+@synthesize middleButton = _middleButton; //Explicit synthesis is possible but usually unnecessary. E.g. If accessors have been explicitly overriden, compiler cannot automatically know that the fields are still needed.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,14 +44,18 @@
     return YES;
 }
 
+- (NSString*)greeting; {
+    NSString *whomToGreet = self.yourName;
+    if ([whomToGreet length] == 0) {
+        whomToGreet = @"World!";
+    }
+    return [[NSString alloc] initWithFormat:@"Hello %@ :)", whomToGreet];
+}
+
 - (IBAction)changeGreeting:(id)sender {
     self.yourName = self.nameInput.text;
 
-    NSString *whomToGreet = self.yourName;
-    if ([self.yourName length] == 0) {
-        whomToGreet = @"World!";
-    }
-    self.greetingOutput.text = [[NSString alloc] initWithFormat:@"Hello %@ :)", whomToGreet];
+    self.greetingOutput.text = self.greeting;
 }
 
 - (IBAction)sayGoodbye:(id)sender {
