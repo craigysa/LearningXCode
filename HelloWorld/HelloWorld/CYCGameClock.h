@@ -13,8 +13,7 @@ typedef NS_ENUM(NSInteger, CYCClockState) {
     csRunning
 };
 
-@interface CYCTimer : NSObject
-//TODO: Consider renaming this to StopWatch
+@interface CYCStopWatch : NSObject
 /* This class defines the implementation for a high-precision stop/start timer.
  NOTE: Support for high-precision timing may vary between platforms, so this class may need to be overridden with platform-specific implementations.
  */
@@ -39,8 +38,9 @@ typedef NS_ENUM(NSInteger, CYCClockState) {
 
 /* A game clock needs a high-precision start/stop timer in order to accurately accumulate time elapsed over a number of discrete intervals. Platform support for high-precision timers is inconsistent, so dependency injection should be used to specify an appropriate start/stop timer for the platform using the clock.
  */
-+ (CYCGameClock *)gameClockWithTimer:(CYCTimer*) timer;
-@property (readonly, nonatomic) CYCTimer *timer;
++ (CYCGameClock *)gameClockWithStopWatch:(CYCStopWatch*) stopWatch;
+- (CYCGameClock*)initWithStopWatch:(CYCStopWatch*) stopWatch;
+@property (readonly, nonatomic) CYCStopWatch *stopWatch;
 
 /* A clock instance is either paused or tracking the elapsed time.
  */

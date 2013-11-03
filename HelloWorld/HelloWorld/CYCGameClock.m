@@ -8,24 +8,24 @@
 
 #import "CYCGameClock.h"
 
-@implementation CYCTimer
+@implementation CYCStopWatch
 //-(void)startTimer;
 //-(NSTimeInterval)stopTimer;
 @end
 
 @interface CYCGameClock ()
-@property (readwrite, nonatomic) CYCTimer *timer;
+@property (readwrite, nonatomic) CYCStopWatch *stopWatch;
 @end
 
 @implementation CYCGameClock {
     NSTimeInterval currentTime;
 }
 
-+ (CYCGameClock *)gameClockWithTimer:(CYCTimer*) timer; {
-    return [[CYCGameClock alloc] initWithTimer:timer];
++ (CYCGameClock *)gameClockWithStopWatch:(CYCStopWatch*) stopWatch; {
+    return [[CYCGameClock alloc] initWithStopWatch:stopWatch];
 }
 
-- (id)initWithTimer:(CYCTimer*) timer; {
+- (CYCGameClock*)initWithStopWatch:(CYCStopWatch*) stopWatch; {
     self = [super init];
 
     //This technique (prescribed by Apple) makes every pragmatic bone in my body cringe.
@@ -34,18 +34,14 @@
     //I most certainly **DO NOT** want to double the size of my code by double-checking that code I called worked correctly - I **expect** it to work correctly, and if it doesn't - it needs to be fixed!!
     //Finally, surely the purpose of <alloc> is to make certain <self> is assigned? It is somewhat unexpected for <initXXX> methods to be changing that?!
     if (self) {
-        _timer = timer;
+        _stopWatch = stopWatch;
     }
 
     return self;
 }
 
 - (id)init; {
-    return [self initWithTimer:[CYCTimer new]];
-}
-
-- (CYCTimer*)timer; {
-    return _timer;
+    return [self initWithStopWatch:[CYCStopWatch new]];
 }
 
 - (void)setTime:(NSInteger)hours :(NSInteger)minutes :(NSInteger)seconds; {

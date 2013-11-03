@@ -10,8 +10,11 @@
 #import "CYCGameClock.h"
 #import <sys/time.h>
 
-@interface CYCGameClockTests : XCTestCase
+@interface CYCGameClock (Test)
+@property (readwrite, nonatomic) CYCStopWatch *stopWatch;
+@end
 
+@interface CYCGameClockTests : XCTestCase
 @end
 
 @implementation CYCGameClockTests {
@@ -20,7 +23,7 @@
 
 - (void)setUp {
     [super setUp];
-    _clock = [CYCGameClock new];
+    _clock = [[CYCGameClock alloc] init];
 }
 
 - (void)tearDown {
@@ -58,24 +61,27 @@
     XCTAssertEqual(300, [_clock totalSeconds], @"5 minutes is 300 seconds");
 }
 
-- (void)testInitWithTimer
-{
-    CYCTimer *timer = [CYCTimer new];
-    CYCGameClock *clock = [CYCGameClock gameClockWithTimer:timer];
-    XCTAssertEqual(timer, clock.timer, @"Same timer");
+- (void)testInitWithStopWatch {
+    CYCStopWatch *stopWatch = [[CYCStopWatch alloc] init];
+    CYCGameClock *clock = [CYCGameClock gameClockWithStopWatch:stopWatch];
+    XCTAssertEqual(stopWatch, clock.stopWatch, @"Same StopWatch");
 }
 
-- (void)testDefaultTimerAssigned
-{
-    CYCGameClock *clock = [CYCGameClock new];
-    XCTAssertNotNil(clock.timer, @"A default timer should be assigned for clocks created without a timer");
+- (void)testDefaultStopWatchAssigned {
+    CYCGameClock *clock = [[CYCGameClock alloc] init];
+    XCTAssertNotNil(clock.stopWatch, @"A default StopWatch should be assigned for clocks created without a StopWatch");
 }
 
-- (void)testStartClock
-{
+- (void)testStartClock {
     [_clock setTime:1:30:0];
     [_clock start];
     XCTAssertEqual(_clock.state, csRunning, @"Clock should be running");
+}
+
+- (void)testInjectStopWatch {
+    CYCStopWatch *stopWatch = [[CYCStopWatch alloc] init];
+    [_clock setStopWatch:stopWatch];
+    XCTAssertEqual(stopWatch, _clock.stopWatch, @"Same StopWatch");
 }
 
 
