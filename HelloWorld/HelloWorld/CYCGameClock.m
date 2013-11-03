@@ -9,23 +9,28 @@
 #import "CYCGameClock.h"
 
 @implementation CYCStopWatch
-//-(void)startTimer;
+
+-(void) start; {
+
+}
+
 //-(NSTimeInterval)stopTimer;
+
 @end
 
 @interface CYCGameClock ()
-@property (readwrite, nonatomic) CYCStopWatch *stopWatch;
+@property (readwrite, nonatomic) id <CYCStopWatch> stopWatch;
 @end
 
 @implementation CYCGameClock {
     NSTimeInterval currentTime;
 }
 
-+ (CYCGameClock *)gameClockWithStopWatch:(CYCStopWatch*) stopWatch; {
++ (CYCGameClock *)gameClockWithStopWatch:(id <CYCStopWatch>) stopWatch; {
     return [[CYCGameClock alloc] initWithStopWatch:stopWatch];
 }
 
-- (CYCGameClock*)initWithStopWatch:(CYCStopWatch*) stopWatch; {
+- (CYCGameClock*)initWithStopWatch:(id <CYCStopWatch>) stopWatch; {
     self = [super init];
 
     //This technique (prescribed by Apple) makes every pragmatic bone in my body cringe.

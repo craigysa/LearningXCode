@@ -11,7 +11,19 @@
 #import <sys/time.h>
 
 @interface CYCGameClock (Test)
-@property (readwrite, nonatomic) CYCStopWatch *stopWatch;
+@property (readwrite, nonatomic) id <CYCStopWatch> stopWatch;
+@end
+
+@interface CYCMockStopWatch : NSObject <CYCStopWatch>
+@property (nonatomic) BOOL started;
+@end
+
+@implementation CYCMockStopWatch
+
+- (void)start; {
+
+}
+
 @end
 
 @interface CYCGameClockTests : XCTestCase
@@ -19,16 +31,6 @@
 
 @implementation CYCGameClockTests {
     CYCGameClock *_clock;
-}
-
-- (void)setUp {
-    [super setUp];
-    _clock = [[CYCGameClock alloc] init];
-}
-
-- (void)tearDown {
-    _clock = nil;
-    [super tearDown];
 }
 
 - (void)testNewClock {
@@ -62,7 +64,7 @@
 }
 
 - (void)testInitWithStopWatch {
-    CYCStopWatch *stopWatch = [[CYCStopWatch alloc] init];
+    id <CYCStopWatch> stopWatch = [[CYCStopWatch alloc] init];
     CYCGameClock *clock = [CYCGameClock gameClockWithStopWatch:stopWatch];
     XCTAssertEqual(stopWatch, clock.stopWatch, @"Same StopWatch");
 }
@@ -79,10 +81,27 @@
 }
 
 - (void)testInjectStopWatch {
-    CYCStopWatch *stopWatch = [[CYCStopWatch alloc] init];
+    id <CYCStopWatch> stopWatch = [[CYCMockStopWatch alloc] init];
     [_clock setStopWatch:stopWatch];
     XCTAssertEqual(stopWatch, _clock.stopWatch, @"Same StopWatch");
 }
 
+- (void)testStopWatchStartCalled {
+    CYCMockStopWatch *stopWatch = [[CYCMockStopWatch alloc] init];
+    [_clock setStopWatch:stopWatch];
+    [_clock start];
+    //TODO....
+    //XCTAssertTrue(stopWatch.started, @"Clock should start StopWatch");
+}
+
+- (void)setUp {
+    [super setUp];
+    _clock = [[CYCGameClock alloc] init];
+}
+
+- (void)tearDown {
+    _clock = nil;
+    [super tearDown];
+}
 
 @end
