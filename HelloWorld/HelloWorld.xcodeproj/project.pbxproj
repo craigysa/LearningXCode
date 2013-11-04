@@ -23,6 +23,8 @@
 		9A64A244180AB69100FA507C /* HelloWorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A64A243180AB69100FA507C /* HelloWorldTests.m */; };
 		9A749D65182190FB0074A949 /* CYCGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A749D64182190FB0074A949 /* CYCGameClock.m */; };
 		9A749D671821915E0074A949 /* CYCGameClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A749D661821915E0074A949 /* CYCGameClockTests.m */; };
+		9AA6F6381828230200AFB74D /* CYCStopWatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6F6371828230200AFB74D /* CYCStopWatchTests.m */; };
+		9AD1DEB018281A07003AD1DF /* CYCStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DEAF18281A07003AD1DF /* CYCStopWatch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		9A749D63182190FB0074A949 /* CYCGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYCGameClock.h; sourceTree = "<group>"; };
 		9A749D64182190FB0074A949 /* CYCGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCGameClock.m; sourceTree = "<group>"; };
 		9A749D661821915E0074A949 /* CYCGameClockTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCGameClockTests.m; sourceTree = "<group>"; };
+		9AA6F6371828230200AFB74D /* CYCStopWatchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCStopWatchTests.m; sourceTree = "<group>"; };
+		9AD1DEAE18281A07003AD1DF /* CYCStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CYCStopWatch.h; path = ../CYCStopWatch.h; sourceTree = "<group>"; };
+		9AD1DEAF18281A07003AD1DF /* CYCStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CYCStopWatch.m; path = ../CYCStopWatch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +132,8 @@
 				9A64A21F180AB69100FA507C /* Supporting Files */,
 				9A749D63182190FB0074A949 /* CYCGameClock.h */,
 				9A749D64182190FB0074A949 /* CYCGameClock.m */,
+				9AD1DEAE18281A07003AD1DF /* CYCStopWatch.h */,
+				9AD1DEAF18281A07003AD1DF /* CYCStopWatch.m */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 				9A64A243180AB69100FA507C /* HelloWorldTests.m */,
 				9A64A23E180AB69100FA507C /* Supporting Files */,
 				9A749D661821915E0074A949 /* CYCGameClockTests.m */,
+				9AA6F6371828230200AFB74D /* CYCStopWatchTests.m */,
 			);
 			path = HelloWorldTests;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 				9A64A229180AB69100FA507C /* HelloWorldAppDelegate.m in Sources */,
 				9A64A22F180AB69100FA507C /* HelloWorldViewController.m in Sources */,
 				9A749D65182190FB0074A949 /* CYCGameClock.m in Sources */,
+				9AD1DEB018281A07003AD1DF /* CYCStopWatch.m in Sources */,
 				9A64A225180AB69100FA507C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +281,7 @@
 			files = (
 				9A749D671821915E0074A949 /* CYCGameClockTests.m in Sources */,
 				9A64A244180AB69100FA507C /* HelloWorldTests.m in Sources */,
+				9AA6F6381828230200AFB74D /* CYCStopWatchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

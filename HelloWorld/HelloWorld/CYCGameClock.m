@@ -8,16 +8,6 @@
 
 #import "CYCGameClock.h"
 
-@implementation CYCStopWatch
-
--(void) start; {
-
-}
-
-//-(NSTimeInterval)stopTimer;
-
-@end
-
 @interface CYCGameClock ()
 @property (readwrite, nonatomic) id <CYCStopWatch> stopWatch;
 @end

@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "CYCGameClock.h"
+#import "CYCStopWatch.h"
 #import <sys/time.h>
 
 @interface CYCGameClock (Test)
@@ -15,13 +16,26 @@
 @end
 
 @interface CYCMockStopWatch : NSObject <CYCStopWatch>
+/* @protocol CYCStopWatch */
+@property (readonly, nonatomic) BOOL running;
+@property (readonly, nonatomic) NSTimeInterval elapsedTime;
+
+/* Additional interfaces */
 @property (nonatomic) BOOL started;
+
 @end
 
 @implementation CYCMockStopWatch
-
 - (void)start; {
 
+}
+
+- (void)stop; {
+
+}
+
+- (void)reset; {
+    
 }
 
 @end

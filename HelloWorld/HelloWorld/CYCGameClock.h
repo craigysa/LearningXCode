@@ -7,18 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@protocol CYCStopWatch <NSObject>
-- (void)start;
-@end
-
-@interface CYCStopWatch : NSObject <CYCStopWatch>
-/* This class defines the implementation for a high-precision stop/start timer.
- NOTE: Support for high-precision timing may vary between platforms, so this class may need to be overridden with platform-specific implementations.
- */
-//-(void)startTimer;
-//-(NSTimeInterval)stopTimer;
-@end
+#import "CYCStopWatch.h"
 
 typedef NS_ENUM(NSInteger, CYCClockState) {
     csPaused,
