@@ -61,8 +61,8 @@
 		9A749D64182190FB0074A949 /* CYCGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCGameClock.m; sourceTree = "<group>"; };
 		9A749D661821915E0074A949 /* CYCGameClockTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCGameClockTests.m; sourceTree = "<group>"; };
 		9AA6F6371828230200AFB74D /* CYCStopWatchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCStopWatchTests.m; sourceTree = "<group>"; };
-		9AD1DEAE18281A07003AD1DF /* CYCStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CYCStopWatch.h; path = ../CYCStopWatch.h; sourceTree = "<group>"; };
-		9AD1DEAF18281A07003AD1DF /* CYCStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CYCStopWatch.m; path = ../CYCStopWatch.m; sourceTree = "<group>"; };
+		9AD1DEAE18281A07003AD1DF /* CYCStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYCStopWatch.h; sourceTree = "<group>"; };
+		9AD1DEAF18281A07003AD1DF /* CYCStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYCStopWatch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
