@@ -16,12 +16,11 @@
 @property (readonly, nonatomic) NSTimeInterval elapsedTime;
 - (void)start;
 - (void)stop;
+- (void)reset;
 @end
 
 /* Class defining a default implementation of the CYCStopWatch protocol. */
 @interface CYCStopWatch : NSObject <CYCStopWatch>
 @property (readonly, nonatomic) BOOL running;
 @property (readonly, nonatomic) NSTimeInterval elapsedTime;
-//-(void)startTimer;
-//-(NSTimeInterval)stopTimer;
 @end

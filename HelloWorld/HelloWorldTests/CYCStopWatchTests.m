@@ -35,7 +35,7 @@
 - (void)testNewStopWatch {
     id <CYCStopWatch> stopWatch = [self createStopWatchToTest];
     XCTAssertFalse([stopWatch running], @"New Stop Watch should not be running");
-    XCTAssertEqual(0.0, [stopWatch elapsedTime], @"New stop watch should have zero time elapsed");
+    XCTAssertEqual([stopWatch elapsedTime], 0.0, @"New stop watch should have zero time elapsed");
 }
 
 - (void)testStart {
@@ -108,6 +108,24 @@
     NSTimeInterval totalElapsedTime = [_stopWatch elapsedTime];
 
     XCTAssertEqualWithAccuracy(totalElapsedTime, 0.11, 0.01, @"Elapsed Time must be a minimum of 100ms (0.11-0.01) and should only be a little more");
+}
+
+- (void)testReset {
+    [_stopWatch start];
+    usleep(100 * 1000);
+    [_stopWatch stop];
+    [_stopWatch reset];
+
+    XCTAssertEqual(_stopWatch.elapsedTime, 0.0, @"Resetting stop watch shuold clear the elapsed time");
+}
+
+- (void)testResetStopsTimer {
+    [_stopWatch start];
+    usleep(100 * 1000);
+    [_stopWatch reset];
+
+    XCTAssertFalse(_stopWatch.running, @"Resetting stop watch should ensure the timer is stopped");
+    XCTAssertEqual(_stopWatch.elapsedTime, 0.0, @"Resetting stop watch shuold clear the elapsed time");
 }
 
 -(void)testDateComponentsFromTimeInterval {

@@ -50,4 +50,10 @@
     return result.tv_sec + (double)result.tv_usec / 1000 / 1000;
 }
 
+- (void)reset {
+    [self stop];
+    _totalTime.tv_sec = 0;
+    _totalTime.tv_usec = 0;
+}
+
 @end

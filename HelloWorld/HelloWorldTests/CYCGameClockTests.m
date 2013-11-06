@@ -17,8 +17,8 @@
 
 @interface CYCMockStopWatch : NSObject <CYCStopWatch>
 /* @protocol CYCStopWatch */
-@property (readonly, nonatomic) BOOL running;
-@property (readonly, nonatomic) NSTimeInterval elapsedTime;
+@property (readwrite, nonatomic) BOOL running;
+@property (readwrite, nonatomic) NSTimeInterval elapsedTime;
 
 /* Additional interfaces */
 @property (nonatomic) BOOL started;
@@ -27,7 +27,7 @@
 
 @implementation CYCMockStopWatch
 - (void)start; {
-
+    self.running = YES;
 }
 
 - (void)stop; {
@@ -44,6 +44,7 @@
 @end
 
 @implementation CYCGameClockTests {
+    CYCMockStopWatch *_mockStopWatch;
     CYCGameClock *_clock;
 }
 
@@ -54,8 +55,11 @@
 - (void)testSetTime {
     [_clock setTime:1:30:0];
     NSTimeInterval expectedTime = (1 * 60 * 60) + (30 * 60) + 0;
-    XCTAssertEqual(expectedTime, _clock.currentTime, @"Clock set to 90 minutes");
-    XCTAssertEqual(1, _clock.hour, @"_clock.hour");
+    XCTAssertEqual(_clock.currentTime, expectedTime, @"Clock set to 90 minutes");
+    XCTAssertEqual(_clock.hour, 1, @"_clock.hour");
+    XCTAssertEqual(_clock.minute, 30, @"_clock.minute");
+    XCTAssertEqual(_clock.second, 0, @"_clock.second");
+    XCTAssertEqual(_clock.millisecond, 0, @"_clock.millisecond");
 }
 
 - (void)testGetTimeOfDay {
@@ -72,11 +76,6 @@
     XCTAssert(elapsedTime <= 1100, @"Sleep should be close to 1s, giving 100ms leeway");
 }
 
-- (void)testTotalSeconds {
-    [_clock setTime:00:05:00];
-    XCTAssertEqual(300, [_clock totalSeconds], @"5 minutes is 300 seconds");
-}
-
 - (void)testInitWithStopWatch {
     id <CYCStopWatch> stopWatch = [[CYCStopWatch alloc] init];
     CYCGameClock *clock = [CYCGameClock gameClockWithStopWatch:stopWatch];
@@ -85,7 +84,8 @@
 
 - (void)testDefaultStopWatchAssigned {
     CYCGameClock *clock = [[CYCGameClock alloc] init];
-    XCTAssertNotNil(clock.stopWatch, @"A default StopWatch should be assigned for clocks created without a StopWatch");
+    XCTAssertNotNil(clock.stopWatch,
+            @"A default StopWatch should be assigned for clocks created without a StopWatch");
 }
 
 - (void)testStartClock {
@@ -94,23 +94,39 @@
     XCTAssertEqual(_clock.state, csRunning, @"Clock should be running");
 }
 
-- (void)testInjectStopWatch {
+- (void)testOverrideExistingStopWatch {
+    /* This is probably an undesirable usage scenario in normal code. However it is desirable to 
+        ensure this works in test code so that we can mock specific behaviour from the stop watch 
+        for soem tests. */
     id <CYCStopWatch> stopWatch = [[CYCMockStopWatch alloc] init];
     [_clock setStopWatch:stopWatch];
     XCTAssertEqual(stopWatch, _clock.stopWatch, @"Same StopWatch");
 }
 
 - (void)testStopWatchStartCalled {
-    CYCMockStopWatch *stopWatch = [[CYCMockStopWatch alloc] init];
-    [_clock setStopWatch:stopWatch];
     [_clock start];
-    //TODO....
-    //XCTAssertTrue(stopWatch.started, @"Clock should start StopWatch");
+    XCTAssertTrue(_mockStopWatch.running, @"Clock should start StopWatch");
+}
+
+- (void)testTestRunningClockReducesTime {
+    [_clock setTime:1:30:0];
+    [_clock start];
+    _mockStopWatch.elapsedTime = 0.150200; /* 150 msec, 200 usec*/
+
+    NSTimeInterval expectedTime = 5399.8498; /* (1 * 3600) + (30 * 60) + 0 - 0.150200 */
+
+    XCTAssertEqual(_clock.currentTime, expectedTime,
+            @"Current time should be reduced by stop watch");
+    XCTAssertEqual(_clock.hour, 1, @"_clock.hour");
+    XCTAssertEqual(_clock.minute, 29, @"_clock.minute");
+    XCTAssertEqual(_clock.second, 59, @"_clock.second");
+    XCTAssertEqual(_clock.millisecond, 849, @"_clock.millisecond");
 }
 
 - (void)setUp {
     [super setUp];
-    _clock = [[CYCGameClock alloc] init];
+    _mockStopWatch = [[CYCMockStopWatch alloc] init];
+    _clock = [CYCGameClock gameClockWithStopWatch:_mockStopWatch];
 }
 
 - (void)tearDown {
