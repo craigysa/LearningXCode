@@ -87,10 +87,11 @@ NOTE: The convention of descriptively naming each attribute has been intentional
 NOTE: Some time control rules may permit time to be automatically added to the clock at the start
     of a player's turn. 
  */
-- (void)start;  //TODO: Do not grant the bonus time if a clock is being started after both clocks
-                //paused, or at start of game. A mechanism will be required to determine this.
+- (void)startMove;  //TODO: Do not grant the bonus time if a clock is being started after both
+                    //clocks paused, or at start of game. A mechanism will be required to determine
+                    //this.
 
-/* Pause the clock. */
-//- (void)pause;
+/* Ends the current move and increments the move counter. */
+- (void)endMove;
 
 @end

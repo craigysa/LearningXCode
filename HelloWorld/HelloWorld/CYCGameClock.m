@@ -51,9 +51,14 @@
     setTime = totalSeconds;
 }
 
-- (void)start; {
+- (void)startMove; {
     _state = csRunning;
     [_stopWatch start];
+}
+
+- (void)endMove; {
+    [_stopWatch stop];
+    _state = csPaused;
 }
 
 - (NSTimeInterval)currentTime; {

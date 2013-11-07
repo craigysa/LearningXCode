@@ -31,11 +31,11 @@
 }
 
 - (void)stop; {
-
+    self.running = NO;
 }
 
 - (void)reset; {
-    
+    self.running = NO;
 }
 
 @end
@@ -89,8 +89,8 @@
 }
 
 - (void)testStartClock {
-    [_clock setTime:1:30:0];
-    [_clock start];
+    [_clock setTime:1:30:00];
+    [_clock startMove];
     XCTAssertEqual(_clock.state, csRunning, @"Clock should be running");
 }
 
@@ -104,13 +104,13 @@
 }
 
 - (void)testStopWatchStartCalled {
-    [_clock start];
+    [_clock startMove];
     XCTAssertTrue(_mockStopWatch.running, @"Clock should start StopWatch");
 }
 
 - (void)testTestRunningClockReducesTime {
-    [_clock setTime:1:30:0];
-    [_clock start];
+    [_clock setTime:1:30:00];
+    [_clock startMove];
     _mockStopWatch.elapsedTime = 0.150200; /* 150 msec, 200 usec*/
 
     NSTimeInterval expectedTime = 5399.8498; /* (1 * 3600) + (30 * 60) + 0 - 0.150200 */
@@ -121,6 +121,15 @@
     XCTAssertEqual(_clock.minute, 29, @"_clock.minute");
     XCTAssertEqual(_clock.second, 59, @"_clock.second");
     XCTAssertEqual(_clock.millisecond, 849, @"_clock.millisecond");
+}
+
+- (void)testStopMove {
+    [_clock startMove];
+    [_clock endMove];
+
+    XCTAssertEqual(_clock.state, csPaused, @"_clock.state");
+    XCTAssertFalse(_mockStopWatch.running, @"Clock should pause StopWatch");
+    //TODO Check _clock.moveCount
 }
 
 - (void)setUp {
