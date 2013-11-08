@@ -59,6 +59,12 @@ typedef NS_ENUM(NSInteger, CYCClockState) {
  */
 @property (readonly, nonatomic) CYCClockState state;
 
+/* Some time control configurations require that the game clock keep track of the number of moves 
+    played. E.g. A typical time control rule in chess is to add extra time for each player after 
+    the first 40 moves of a game.
+ */
+@property (nonatomic) int moveCount;
+
 /* Sets the current time to display on the clock.
 NOTE: The convention of descriptively naming each attribute has been intentionally violated due to
     the extremely intuitive way in which this can be used to set the time.

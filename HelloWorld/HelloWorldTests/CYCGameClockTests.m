@@ -129,7 +129,7 @@
 
     XCTAssertEqual(_clock.state, csPaused, @"_clock.state");
     XCTAssertFalse(_mockStopWatch.running, @"Clock should pause StopWatch");
-    //TODO Check _clock.moveCount
+    XCTAssertEqual(_clock.moveCount, 1, @"_clock.moveCount");
 }
 
 - (void)setUp {

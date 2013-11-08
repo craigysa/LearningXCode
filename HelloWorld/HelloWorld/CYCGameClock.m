@@ -59,6 +59,7 @@
 - (void)endMove; {
     [_stopWatch stop];
     _state = csPaused;
+    _moveCount += 1;
 }
 
 - (NSTimeInterval)currentTime; {
