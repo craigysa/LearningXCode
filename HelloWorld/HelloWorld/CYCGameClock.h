@@ -99,5 +99,6 @@ NOTE: Some time control rules may permit time to be automatically added to the c
 
 /* Ends the current move and increments the move counter. */
 - (void)endMove;
+- (void)pause;
 
 @end

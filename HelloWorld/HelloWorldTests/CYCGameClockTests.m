@@ -129,7 +129,23 @@
 
     XCTAssertEqual(_clock.state, csPaused, @"_clock.state");
     XCTAssertFalse(_mockStopWatch.running, @"Clock should pause StopWatch");
-    XCTAssertEqual(_clock.moveCount, 1, @"_clock.moveCount");
+    XCTAssertEqual(_clock.moveCount, 1, @"counter must be incremented at the end of each move");
+}
+
+- (void)testEndMoveWhenClockPaused {
+    XCTAssertEqual(_clock.state, csPaused, @"Pre: Clock should be paused for this test");
+    [_clock endMove];
+
+    XCTAssertFalse(_mockStopWatch.running, @"Clock should pause StopWatch");
+    XCTAssertEqual(_clock.moveCount, 0, @"Do not increment counter if clock already paused");
+}
+
+- (void)testPause {
+    /*  The clock can be paused without ending the current move. (E.g. when calling the tournament
+        director.) In this way the move counter won't be incremented. */
+    [_clock startMove];
+    [_clock pause];
+
 }
 
 - (void)setUp {

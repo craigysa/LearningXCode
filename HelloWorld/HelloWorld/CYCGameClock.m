@@ -57,9 +57,16 @@
 }
 
 - (void)endMove; {
+    if (self.state == csRunning) {
+        [_stopWatch stop];
+        _state = csPaused;
+        _moveCount += 1;
+    }
+}
+
+- (void)pause; {
     [_stopWatch stop];
     _state = csPaused;
-    _moveCount += 1;
 }
 
 - (NSTimeInterval)currentTime; {
